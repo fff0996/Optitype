@@ -83,3 +83,21 @@ else{
 df <- left_join(df,df_t,by="gene_id")
 }
 }
+
+
+##estimate molecules
+dd2 <- data.frame()
+
+ for ( i in 2:(ncol(dd)-1)){
+ tmp <- dd[,c(1,i)]
+ mol <- (tmp[[2]]/1000000) * 300000
+tmp[[2]] <- mol
+ if ( i ==2){
+
+dd2 <- tmp
+ }
+ else{
+ dd2 <- left_join(dd2,tmp,by="gene_id")
+ }
+ }
+
